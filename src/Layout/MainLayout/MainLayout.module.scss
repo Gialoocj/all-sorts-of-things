@@ -1,0 +1,30 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  display: flex;
+  overflow: auto;
+  //   align-items: center;
+
+  .navigation {
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    width: 256px;
+    background-color: #fff;
+  }
+
+  .content {
+    padding-left: 256px;
+    width: 100%;
+
+    @include media-breakpoint-down(md) {
+      padding-left: 0;
+    }
+  }
+}

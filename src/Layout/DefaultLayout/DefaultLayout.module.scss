@@ -1,0 +1,25 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.wrapper {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2155bf;
+  position: relative;
+
+  .nav {
+    height: 100%;
+    width: 6%;
+    position: fixed;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+  }
+}

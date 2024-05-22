@@ -1,0 +1,90 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Goudy+Bookletter+1911&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&display=swap");
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid rgba(210, 199, 199, 0.725);
+  padding: 12px;
+  transform: translateX(0);
+  transform-origin: left;
+  transition: transform 0.3s linear;
+
+  @include media-breakpoint-down(md) {
+    transform: translateX(-100%);
+  }
+
+  @include media-breakpoint-down(sm) {
+    transform: translateX(-100%);
+  }
+
+  &-active {
+    transform: translateX(0);
+  }
+
+  h1 {
+    font-family: "Goudy Bookletter 1911", serif;
+    font-size: 24px;
+    margin-top: 30px;
+  }
+
+  .navigation {
+    height: 50%;
+    margin-top: 50px;
+    // background-color: red;
+
+    .nav-item {
+      margin: 8px 0;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      transition: 0.3s;
+      text-decoration: none;
+      color: black;
+
+      span {
+        margin-left: 16px;
+      }
+    }
+
+    .nav-item:hover {
+      cursor: pointer;
+      background-color: rgba(144, 134, 248, 0.1);
+    }
+
+    .active {
+      font-weight: 600;
+    }
+  }
+}
+
+:global {
+  .icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%)
+      hue-rotate(192deg) brightness(102%) contrast(102%);
+  }
+
+  .btn-nav {
+    border: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // q: fa;
+
+    .menu-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    &-hidden {
+      display: none;
+      opacity: 0;
+    }
+  }
+}
