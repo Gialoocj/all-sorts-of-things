@@ -20,7 +20,7 @@ const PopularVideo = ({ video }) => {
       <div className={cx("thumbnails-wrapper")}>
         {videoInfor && (
           <img
-            src={videoInfor.thumbnails.medium.url}
+            src={videoInfor?.thumbnails?.medium.url}
             alt="thumb-nail"
             className={cx("thumbnails")}
           />
