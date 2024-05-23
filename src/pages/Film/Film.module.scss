@@ -15,6 +15,7 @@
     position: fixed;
     z-index: 998;
     background-color: #fff;
+    margin-left: -6%;
 
     @include media-breakpoint-down(lg) {
       margin-left: 20%;
@@ -150,7 +151,7 @@
 
     .video-item {
       grid-column: span 4;
-      background-color: red;
+      // background-color: red;
       height: auto;
 
       @include media-breakpoint-down(lg) {

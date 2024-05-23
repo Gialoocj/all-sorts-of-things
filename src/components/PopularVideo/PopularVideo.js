@@ -8,17 +8,22 @@ const cx = classNames.bind(styles);
 
 const PopularVideo = ({ video }) => {
   const dispatch = useDispatch();
-  const [videoInfor, setVideoInfor] = useState({});
+  const [videoInfor, setVideoInfor] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getVideoById(video.id)).then((result) => {
       setVideoInfor(result.payload.items[0].snippet);
+      setLoading(false);
     });
   }, [dispatch]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("thumbnails-wrapper")}>
-        {videoInfor && (
+        {loading ? (
+          <div className={cx("skeleton")}> </div>
+        ) : (
           <img
             src={videoInfor?.thumbnails?.medium.url}
             alt="thumb-nail"
