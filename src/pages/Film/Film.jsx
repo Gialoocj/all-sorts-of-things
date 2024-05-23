@@ -54,6 +54,7 @@ const Film = () => {
             type="text"
             onChange={handleInputChange}
             className={cx("input-search")}
+            placeholder="Search"
           />
           <button className={cx("btn-search")}>
             <SearchIcon className={cx("icon")} />
