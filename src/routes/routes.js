@@ -5,6 +5,8 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import Film from "../pages/Film";
+import ChatBot from "../pages/ChatBot";
+import Page404 from "../pages/Page404";
 
 const publicRoutes = [
   {
@@ -22,6 +24,17 @@ const publicRoutes = [
   {
     path: config.routes.login,
     component: Login,
+    layout: null,
+  },
+
+  {
+    path: config.routes.chatbot,
+    component: ChatBot,
+    layout: MainLayout,
+  },
+  {
+    path: config.routes.error,
+    component: Page404,
     layout: null,
   },
 ];

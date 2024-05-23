@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl = "https://all-sorts-of-things.onrender.com/api/v1";
 
 export const sendMessage = createAsyncThunk(
   "chat/sendMessage",

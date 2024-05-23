@@ -78,6 +78,7 @@ const Navigation = ({ handleOpenNav, isMobile, isOpenNav }) => {
               className={cx("nav-item", {
                 active: currentUrl.includes(`${nav.slug}`),
               })}
+              to={nav.path}
             >
               {nav.icon}
               <span>{nav.name}</span>

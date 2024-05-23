@@ -1,0 +1,258 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Goudy+Bookletter+1911&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&display=swap");
+
+.wrapper {
+  padding-top: 0px;
+  font-family: "Goudy Bookletter 1911", serif;
+
+  .chat-bot-container {
+    width: 56%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+    position: relative;
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+      padding: 8px;
+      height: 90vh;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      padding: 8px;
+      height: 90vh;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      padding: 8px;
+      height: 90vh;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding-top: 70px;
+  }
+
+  .header {
+    display: flex;
+    // position: fixe;
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+
+    .chat-image-wrapper {
+      width: 48px;
+      height: 48px;
+      margin-right: 12px;
+
+      @include media-breakpoint-down(lg) {
+        width: 56px;
+        height: 56px;
+      }
+      @include media-breakpoint-down(md) {
+        width: 56px;
+        height: 56px;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 56px;
+        height: 56px;
+      }
+
+      .chat-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 1px solid black;
+        border-radius: 100rem;
+      }
+    }
+
+    .state-group {
+      display: flex;
+      flex-direction: column;
+
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+
+      .chat-name {
+        font-size: 18px;
+        //   margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .chat-state {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.552);
+      }
+    }
+  }
+
+  .chat-frame {
+    width: 100%;
+    height: 84%;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    .message-wrapper-model {
+      height: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+
+      .image-chat-wrapper {
+        width: 28px;
+        height: 28px;
+        // border-radius: 100rem;
+        // border: 1px solid black;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 100rem;
+        }
+      }
+
+      .model {
+        width: fit-content;
+        background-color: #ffc7ea;
+        padding: 8px 12px;
+        margin-left: 6px;
+        border-radius: 12px;
+      }
+    }
+
+    .loader-chat-wrapper {
+      display: flex;
+
+      .image-chat-wrapper {
+        width: 28px;
+        height: 28px;
+        // border-radius: 100rem;
+        // border: 1px solid black;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 100rem;
+        }
+      }
+
+      .loader-wrapper {
+        width: fit-content;
+        background-color: #ffc7ea;
+        padding: 8px 12px;
+        width: 60px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        margin-left: 6px;
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+          color: #000;
+          width: 2px; /* Reduced width */
+          aspect-ratio: 1;
+          border-radius: 50%;
+          box-shadow: 10px 0 0 3px, 20px 0 0 1.5px, 30px 0 0 0; /* Adjusted box-shadow */
+          transform: translateX(-20px); /* Adjusted transform */
+          animation: l21 0.5s infinite alternate linear;
+        }
+
+        @keyframes l21 {
+          50% {
+            box-shadow: 10px 0 0 1.5px, 20px 0 0 3px, 30px 0 0 1.5px; /* Adjusted box-shadow */
+          }
+          100% {
+            box-shadow: 10px 0 0 0, 20px 0 0 1.5px, 30px 0 0 3px; /* Adjusted box-shadow */
+          }
+        }
+      }
+    }
+
+    .message-wrapper-user {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      margin: 6px 0;
+
+      .user {
+        width: fit-content;
+        background-color: #cdfad5;
+        padding: 8px 12px;
+        margin-left: 6px;
+        border-radius: 12px;
+      }
+    }
+
+    .message-wrapper:first-child {
+      margin-top: 20px;
+    }
+  }
+
+  .input-chat {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -12px;
+
+    .message {
+      height: 100%;
+      border: 2px solid rgba(128, 128, 128, 0.4);
+      border-radius: 100rem;
+      padding: 0 16px;
+      width: 84%;
+      margin-right: 8px;
+      font-size: 16px;
+      font-family: "Goudy Bookletter 1911", serif;
+    }
+
+    .message:focus {
+      outline: none;
+    }
+
+    .send {
+      background-color: #fff;
+      border: 2px solid rgba(128, 128, 128, 0.4);
+      border-radius: 100rem;
+      height: 100%;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        width: 24px;
+        height: 24px;
+        transform: rotate(-25deg);
+      }
+    }
+
+    .send:hover {
+      cursor: pointer;
+    }
+  }
+}
