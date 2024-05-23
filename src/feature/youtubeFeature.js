@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { searchVideos, getVideoById } from "../apiService/youtubeService";
+import {
+  searchVideos,
+  getVideoById,
+  getPopularVideos,
+} from "../apiService/youtubeService";
 
 export const youtubeSlice = createSlice({
   name: "youtube",
@@ -34,6 +38,18 @@ export const youtubeSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
         // console.log(action.payload);
+      })
+      .addCase(getPopularVideos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getPopularVideos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.videos = action.payload;
+      })
+      .addCase(getPopularVideos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

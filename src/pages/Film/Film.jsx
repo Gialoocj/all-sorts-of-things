@@ -6,41 +6,21 @@ import { toast } from "react-toastify";
 import { getVideoById } from "../../apiService/youtubeService";
 // import Video from "../../components/Video/Video";
 import { MenuIcon, SearchIcon } from "../../components/icons/icons";
-import { searchVideos } from "../../apiService/youtubeService";
+import {
+  searchVideos,
+  getPopularVideos,
+} from "../../apiService/youtubeService";
+import PopularVideo from "../../components/PopularVideo/PopularVideo";
 
 const cx = classNames.bind(styles);
-
-function Video({ video }) {
-  const dispatch = useDispatch();
-  const [videoInfor, setVideoInfor] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // setLoading
-    dispatch(getVideoById(video.id.videoId)).then((result) => {
-      setVideoInfor(result.payload.items[0].snippet);
-      setLoading(false);
-    });
-  }, []);
-
-  return (
-    <div className={cx("wrapper")}>
-      {loading ? (
-        <div className={cx("skeleton")}></div>
-      ) : (
-        <div className={cx("thumbnail")}>
-          <img src={videoInfor?.thumbnails.medium.url} alt="thumb-nail" />
-        </div>
-      )}
-    </div>
-  );
-}
 
 const Film = () => {
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState("");
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [popularVideos, setPopularVideos] = useState([]);
+
   const handleInputChange = (e) => {
     setSearchKey(e.target.value);
   };
@@ -58,6 +38,14 @@ const Film = () => {
     });
   };
 
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getPopularVideos()).then((result) => {
+      setPopularVideos(result.payload.items);
+      // console.log(result.payload.items);
+      setLoading(false);
+    });
+  }, [dispatch]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("search-wrapper")}>
@@ -71,6 +59,24 @@ const Film = () => {
             <SearchIcon className={cx("icon")} />
           </button>
         </div>
+      </div>
+
+      <div className={cx("content")}>
+        {loading ? (
+          <div className={cx("loader-wrapper")}>
+            <div className={cx("loader")}> </div>
+          </div>
+        ) : (
+          <>
+            {popularVideos.map((video) => {
+              return (
+                <div className={cx("video-item")}>
+                  <PopularVideo video={video} />
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

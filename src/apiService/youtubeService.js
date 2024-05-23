@@ -42,3 +42,24 @@ export const getVideoById = createAsyncThunk(
     }
   }
 );
+
+export const getPopularVideos = createAsyncThunk(
+  "youtube/popularVideos",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${baseUrl}videos`, {
+        params: {
+          key: key,
+          part: "snippet,statistics",
+          chart: "mostPopular",
+          regionCode: "US",
+          maxResults: 12,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

@@ -11,10 +11,10 @@
     height: auto;
     display: flex;
     justify-content: center;
-    padding-top: 12px;
-    position: relative;
+    padding: 12px 0;
+    position: fixed;
     z-index: 998;
-    // background-color: green;
+    background-color: #fff;
 
     @include media-breakpoint-down(lg) {
       margin-left: 20%;
@@ -89,6 +89,80 @@
         @include media-breakpoint-down(sm) {
           width: 16%;
         }
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding: 80px 16px 16px 16px;
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .loader-wrapper {
+      grid-column: span 12;
+      height: 72vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        --c: no-repeat radial-gradient(farthest-side, #25b09b 92%, #0000);
+        background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%,
+          var(--c) 0 50%;
+        background-size: 12px 12px;
+        animation: l12 1s infinite;
+      }
+      .loader::before {
+        margin: 4px;
+        filter: hue-rotate(45deg);
+        background-size: 8px 8px;
+        animation-timing-function: linear;
+      }
+
+      @keyframes l12 {
+        100% {
+          transform: rotate(0.5turn);
+        }
+      }
+    }
+
+    .video-item {
+      grid-column: span 4;
+      background-color: red;
+      height: auto;
+
+      @include media-breakpoint-down(lg) {
+        grid-column: span 1;
+      }
+
+      @include media-breakpoint-down(md) {
+        grid-column: span 1;
+      }
+
+      @include media-breakpoint-down(sm) {
+        grid-column: span 1;
       }
     }
   }
