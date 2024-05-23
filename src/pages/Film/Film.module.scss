@@ -1,29 +1,102 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Goudy+Bookletter+1911&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&display=swap");
 
 .wrapper {
   overflow: hidden;
-  .video-list {
+
+  .search-wrapper {
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: column;
-  }
+    justify-content: center;
+    padding-top: 12px;
+    position: relative;
+    z-index: 998;
+    // background-color: green;
 
-  .skeleton {
-    width: 320px;
-    height: 180px;
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: flash 1.5s infinite;
-    border-radius: 4px;
-  }
+    @include media-breakpoint-down(lg) {
+      margin-left: 50px;
+      justify-content: start;
+    }
 
-  @keyframes flash {
-    0% {
-      background-position: 200% 0;
+    @include media-breakpoint-down(md) {
+      margin-left: 70px;
+      justify-content: start;
     }
-    100% {
-      background-position: -200% 0;
+
+    @include media-breakpoint-down(sm) {
+      margin-left: 70px;
+      justify-content: start;
     }
+
+    .search {
+      width: 50%;
+      height: 48px;
+      border: 2px solid #e2e2e2;
+      border-radius: 100rem;
+      display: flex;
+      align-items: center;
+
+      @include media-breakpoint-down(lg) {
+        width: 60%;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 76%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 76%;
+      }
+
+      .input-search {
+        height: 100%;
+        border: 0;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 90%;
+        font-family: "Goudy Bookletter 1911", serif;
+        font-size: 16px;
+      }
+
+      .input-search:focus {
+        outline: none;
+        padding: 0 16px;
+      }
+
+      .btn-search {
+        height: 100%;
+        width: 10%;
+        border: 0;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-left: 1px solid #e2e2e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+
+        @include media-breakpoint-down(lg) {
+          width: 16%;
+        }
+
+        @include media-breakpoint-down(md) {
+          width: 16%;
+        }
+
+        @include media-breakpoint-down(sm) {
+          width: 16%;
+        }
+      }
+    }
+  }
+}
+
+:global {
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 }

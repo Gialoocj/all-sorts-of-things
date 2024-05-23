@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { getVideoById } from "../../apiService/youtubeService";
 // import Video from "../../components/Video/Video";
-
+import { MenuIcon, SearchIcon } from "../../components/icons/icons";
 import { searchVideos } from "../../apiService/youtubeService";
 
 const cx = classNames.bind(styles);
@@ -58,43 +58,20 @@ const Film = () => {
     });
   };
 
-  //   useEffect(() => {
-  //     for (var i = 0; i < videos.length(); i++) {
-  //       videoIdList.push(videos[i].list);
-  //     }
-  //   }, [videoIdList]);
-
   return (
-    <div>
-      <input
-        type="text"
-        style={{ width: "50%", margin: "0 auto", height: "40px" }}
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            searchVideo();
-          }
-        }}
-      />
-      {videos.length > 0 && (
-        <div className={cx("videos-list")}>
-          {videos.map((video, index) => {
-            return (
-              <>
-                {loading ? (
-                  <div className={cx("skeleton")}></div>
-                ) : (
-                  <div>
-                    <Video key={index} video={video} />
-                  </div>
-                )}
-              </>
-            );
-          })}
+    <div className={cx("wrapper")}>
+      <div className={cx("search-wrapper")}>
+        <div className={cx("search")}>
+          <input
+            type="text"
+            onChange={handleInputChange}
+            className={cx("input-search")}
+          />
+          <button className={cx("btn-search")}>
+            <SearchIcon className={cx("icon")} />
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };

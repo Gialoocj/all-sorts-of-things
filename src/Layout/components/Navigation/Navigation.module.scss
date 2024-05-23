@@ -10,19 +10,6 @@
   padding: 12px;
   transform: translateX(0);
   transform-origin: left;
-  transition: transform 0.3s linear;
-
-  @include media-breakpoint-down(md) {
-    transform: translateX(-100%);
-  }
-
-  @include media-breakpoint-down(sm) {
-    transform: translateX(-100%);
-  }
-
-  &-active {
-    transform: translateX(0);
-  }
 
   h1 {
     font-family: "Goudy Bookletter 1911", serif;

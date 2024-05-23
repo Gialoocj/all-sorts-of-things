@@ -67,14 +67,6 @@ const Navigation = ({ handleOpenNav, isMobile, isOpenNav }) => {
 
   return (
     <>
-      <button
-        onClick={handleOpenNav}
-        className={cx("btn-nav", {
-          "btn-nav-hidden": isMobile && isOpenNav,
-        })}
-      >
-        <MenuIcon className={cx("menu-icon")} />
-      </button>
       <div
         className={cx("wrapper", { "wrapper-active": isOpenNav && isMobile })}
       >
