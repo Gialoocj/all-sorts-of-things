@@ -1,0 +1,394 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Goudy+Bookletter+1911&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&display=swap");
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Goudy Bookletter 1911", serif;
+
+  .translate-container {
+    width: 52%;
+    height: 90%;
+    // background-color: red;
+    // display: grid;
+    // grid-template-columns: repeat(1, 1fr);
+    // background-color: #caedff;
+    padding: 16px;
+    border-radius: 12px;
+
+    .translate-header {
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+
+      .button-group {
+        display: flex;
+        // background-color: red;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        label {
+          font-weight: 600;
+        }
+
+        .source-lang {
+          width: 82%;
+          padding: 6px 16px;
+          //   background-color: blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid gray;
+          border-radius: 8px;
+          margin-left: 6px;
+        }
+
+        .target-lang {
+          width: 82%;
+          padding: 6px 50px;
+          //   background-color: blue;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          border: 1px solid gray;
+          border-radius: 8px;
+          margin-left: 6px;
+
+          .arrow-icon {
+            width: 16px;
+            height: 16px;
+            transform: rotate(0);
+            transition: 0.3s;
+
+            &-active {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .target-lang:hover {
+          cursor: pointer;
+        }
+
+        .lang-menu {
+          position: absolute;
+          top: 40px;
+          width: 100%;
+          background-color: #fff;
+          //   border: 1px solid gray;
+          box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+            rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+          border-radius: 6px;
+          transform: scale(0);
+          transform-origin: top;
+          transition: 0.4s;
+
+          &-active {
+            transform: scale(1);
+          }
+
+          .lang-item {
+            padding: 6px 16px;
+          }
+
+          .lang-item:first-child {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+          }
+
+          .lang-item:last-child {
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+          }
+
+          .lang-item:hover {
+            cursor: pointer;
+            background-color: #f4f3fe;
+          }
+        }
+      }
+    }
+
+    .input-lang {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .input-text {
+        resize: none;
+        padding: 12px;
+        border-radius: 8px;
+        height: 220px;
+        font-family: "Goudy Bookletter 1911", serif;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      .input-text:hover {
+        border: 1px solid violet;
+      }
+
+      .input-text:focus {
+        outline: none;
+        border: 1px solid violet;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+      }
+    }
+
+    .output-lang {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+      position: relative;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .output-text {
+        resize: none;
+        padding: 12px;
+        border-radius: 8px;
+        height: 220px;
+        font-family: "Goudy Bookletter 1911", serif;
+        font-size: 16px;
+        transition: 0.3s;
+        user-select: none;
+        // pointer-events: none;
+      }
+
+      .output-text:hover {
+        border: 1px solid violet;
+      }
+
+      .output-text:focus {
+        outline: none;
+        border: 1px solid violet;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+      }
+
+      .btn-coppy {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border: 0;
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+
+        .coppy-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .btn-coppy:hover {
+        cursor: pointer;
+      }
+    }
+
+    .translate-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-translate {
+      width: 100%;
+      height: 48px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: "Goudy Bookletter 1911", serif;
+      font-weight: 600;
+      font-size: 16px;
+      background-color: #b799ff;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .btn-translate:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.loader-wrapper {
+  position: absolute;
+  top: 44px;
+  left: 12px;
+}
+
+.loader {
+  --w: 10ch;
+  font-family: "Goudy Bookletter 1911", serif;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: var(--w);
+  width: var(--w);
+  overflow: hidden;
+  white-space: nowrap;
+  color: #0000;
+  animation: l19 2s infinite linear;
+}
+.loader:before {
+  content: "Loading...";
+}
+
+@keyframes l19 {
+  0% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  4% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  8% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  12% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  16% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0, calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0,
+      calc(-7 * var(--w)) 0, calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  20% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0,
+      calc(-7 * var(--w)) 0, calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  24% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0, calc(-8 * var(--w)) 0,
+      calc(-9 * var(--w)) 0;
+  }
+  28% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0, calc(-8 * var(--w)) 0,
+      calc(-9 * var(--w)) 0;
+  }
+  32% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+  36% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0;
+  }
+  40%,
+  60% {
+    text-shadow: calc(0 * var(--w)) 0 #000, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  64% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0 #000,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  68% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0 #000, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  72% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0 #000,
+      calc(-4 * var(--w)) 0 #000, calc(-5 * var(--w)) 0 #000,
+      calc(-6 * var(--w)) 0 #000, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  76% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0 #000,
+      calc(-5 * var(--w)) 0 #000, calc(-6 * var(--w)) 0 #000,
+      calc(-7 * var(--w)) 0 #000, calc(-8 * var(--w)) 0 #000,
+      calc(-9 * var(--w)) 0 #000;
+  }
+  80% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0 #000, calc(-6 * var(--w)) 0 #000,
+      calc(-7 * var(--w)) 0 #000, calc(-8 * var(--w)) 0 #000,
+      calc(-9 * var(--w)) 0 #000;
+  }
+  84% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0 #000,
+      calc(-7 * var(--w)) 0 #000, calc(-8 * var(--w)) 0 #000,
+      calc(-9 * var(--w)) 0 #000;
+  }
+  88% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0 #000,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  92% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0 #000, calc(-9 * var(--w)) 0 #000;
+  }
+  96% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0 #000;
+  }
+  100% {
+    text-shadow: calc(0 * var(--w)) 0, calc(-1 * var(--w)) 0,
+      calc(-2 * var(--w)) 0, calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0,
+      calc(-5 * var(--w)) 0, calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0,
+      calc(-8 * var(--w)) 0, calc(-9 * var(--w)) 0;
+  }
+}

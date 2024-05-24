@@ -5,5 +5,7 @@ const routes = {
   login: "/",
   chatbot: "/chat-bot",
   forbidden: "/forbidden",
+  translate: "/translate",
 };
+
 export default routes;

@@ -7,3 +7,8 @@
 .App {
   position: relative;
 }
+
+::selection {
+  background: #e1aeff; /* Màu nền khi bôi đen */
+  color: #ffffff; /* Màu chữ khi bôi đen */
+}
