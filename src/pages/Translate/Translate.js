@@ -28,10 +28,6 @@ const Translate = () => {
       name: "Korean",
       code: "ko",
     },
-    {
-      name: "Chinese",
-      code: "zh",
-    },
   ]);
 
   const langRef = useRef();
@@ -159,6 +155,9 @@ const Translate = () => {
           <button
             className={cx("btn-coppy")}
             onClick={() => {
+              if (outputText.trim() === "") {
+                return toast.warning("Please translate first");
+              }
               navigator.clipboard.writeText(outputText);
               toast("Coppy success");
             }}
