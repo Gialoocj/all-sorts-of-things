@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.scss";
 import className from "classnames/bind";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { EmailIcon, LockIcon, UnlockIcon } from "../../components/icons/icons";
 import { useDispatch } from "react-redux";
 import { login, register } from "../../apiService/authService";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const cx = className.bind(styles);
 
@@ -35,11 +36,26 @@ const Login = () => {
         return toast.error(result.payload.message);
       }
       toast.success(result.payload.message);
+      console.log(result);
+      Cookies.set("accessToken", result.payload.accessToken);
+      Cookies.set("refreshToken", result.payload.refreshToken);
+
       setTimeout(() => {
         window.location.href = "/watch";
       }, 1500);
     });
   };
+
+  useEffect(() => {
+    const check = localStorage.getItem("check");
+    if (check === "true") {
+      toast.success("Log out successfully");
+      setTimeout(() => {
+        localStorage.removeItem("check");
+      }, 1000);
+    }
+  }, []);
+
   return (
     <div className={cx("wrapper")}>
       <form className={cx("register-form-wrapper")}>

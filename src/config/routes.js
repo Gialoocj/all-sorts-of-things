@@ -1,8 +1,9 @@
 const routes = {
+  error: "*",
   watch: "/watch",
   register: "/register",
   login: "/",
   chatbot: "/chat-bot",
-  error: "*",
+  forbidden: "/forbidden",
 };
 export default routes;

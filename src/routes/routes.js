@@ -7,14 +7,9 @@ import MainLayout from "../Layout/MainLayout/MainLayout";
 import Film from "../pages/Film";
 import ChatBot from "../pages/ChatBot";
 import Page404 from "../pages/Page404";
+import Forbidden from "../pages/Forbidden/Forbidden";
 
 const publicRoutes = [
-  {
-    path: config.routes.watch,
-    component: Film,
-    layout: MainLayout,
-  },
-
   {
     path: config.routes.register,
     component: Register,
@@ -28,15 +23,28 @@ const publicRoutes = [
   },
 
   {
-    path: config.routes.chatbot,
-    component: ChatBot,
-    layout: MainLayout,
-  },
-  {
     path: config.routes.error,
     component: Page404,
     layout: null,
   },
+  {
+    path: config.routes.forbidden,
+    component: Forbidden,
+    layout: null,
+  },
 ];
 
-export { publicRoutes };
+const privateRoutes = [
+  {
+    path: config.routes.watch,
+    component: Film,
+    layout: MainLayout,
+  },
+  {
+    path: config.routes.chatbot,
+    component: ChatBot,
+    layout: MainLayout,
+  },
+];
+
+export { publicRoutes, privateRoutes };

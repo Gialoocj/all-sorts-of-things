@@ -9,8 +9,10 @@ import {
   RobotIcon,
   ImageIcon,
   MenuIcon,
+  LogoutIcon,
 } from "../../../components/icons/icons";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const cx = classNames.bind(styles);
 
@@ -65,6 +67,15 @@ const Navigation = ({ handleOpenNav, isMobile, isOpenNav }) => {
     setCurrentUrl(url);
   }, [window.location.href]);
 
+  const handleLogout = () => {
+    Cookies.remove("accessToken");
+    // localStorage.removeItem("user");
+    Cookies.remove("refreshToken");
+    localStorage.setItem("check", "true");
+    window.location.href = "/";
+    console.log("clicked");
+  };
+
   return (
     <>
       <div
@@ -78,17 +89,29 @@ const Navigation = ({ handleOpenNav, isMobile, isOpenNav }) => {
               className={cx("nav-item", {
                 active: currentUrl.includes(`${nav.slug}`),
               })}
+              onClick={handleOpenNav}
               to={nav.path}
             >
               {nav.icon}
               <span>{nav.name}</span>
             </Link>
           ))}
+
           <div className={cx("profile")}>
             <div className={cx("profile-image")}></div>
             <span className={cx("profile-name")}>Profile</span>
           </div>
         </div>
+
+        <button
+          className={cx("logout")}
+          onClick={() => {
+            handleLogout();
+          }}
+        >
+          <LogoutIcon className={cx("icon")} />
+          <span>Log out</span>
+        </button>
       </div>
     </>
   );
