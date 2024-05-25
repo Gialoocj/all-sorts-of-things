@@ -25,12 +25,12 @@ const App = () => {
 
   return (
     <div className="App">
-      {isDesktop && (
+      {/* {isDesktop && (
         <div
           className="pointer"
           style={{ left: position.x, top: position.y }}
         ></div>
-      )}
+      )} */}
       <Router>
         <Routes>
           {publicRoutes.map((route, index) => {
