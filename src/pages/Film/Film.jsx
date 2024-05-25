@@ -63,7 +63,7 @@ const Film = () => {
               }
             }}
           />
-          <button className={cx("btn-search")}>
+          <button className={cx("btn-search")} onClick={searchVideo}>
             <SearchIcon className={cx("icon")} />
           </button>
         </div>
