@@ -3,6 +3,7 @@ import {
   searchVideos,
   getVideoById,
   getPopularVideos,
+  getChannelById,
 } from "../apiService/youtubeService";
 
 export const youtubeSlice = createSlice({
@@ -48,6 +49,18 @@ export const youtubeSlice = createSlice({
         state.videos = action.payload;
       })
       .addCase(getPopularVideos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getChannelById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getChannelById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.videos = action.payload;
+      })
+      .addCase(getChannelById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

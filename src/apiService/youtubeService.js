@@ -63,3 +63,22 @@ export const getPopularVideos = createAsyncThunk(
     }
   }
 );
+
+export const getChannelById = createAsyncThunk(
+  "youtube/channelById",
+  async (channelId, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${baseUrl}channels`, {
+        params: {
+          key: key,
+          id: channelId,
+          part: "snippet,statistics",
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
