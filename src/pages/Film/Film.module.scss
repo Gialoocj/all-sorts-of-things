@@ -166,6 +166,10 @@
         grid-column: span 1;
       }
     }
+
+    .video-item:hover {
+      cursor: pointer;
+    }
   }
 }
 

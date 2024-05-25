@@ -10,27 +10,8 @@ import PublicRoutes from "./components/PublicRoutes/PublicRoutes";
 import PageNotFound from "./pages/Page404";
 
 const App = () => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      setPosition({ x: event.clientX, y: event.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [position]);
-
   return (
     <div className="App">
-      {/* {isDesktop && (
-        <div
-          className="pointer"
-          style={{ left: position.x, top: position.y }}
-        ></div>
-      )} */}
       <Router>
         <Routes>
           {publicRoutes.map((route, index) => {

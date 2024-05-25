@@ -76,7 +76,7 @@ const Film = () => {
           </div>
         ) : (
           <>
-            {popularVideos.map((video) => {
+            {popularVideos?.map((video) => {
               return (
                 <div className={cx("video-item")}>
                   <PopularVideo video={video} />

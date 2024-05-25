@@ -38,7 +38,7 @@
     }
 
     .nav-item:hover {
-      cursor: none;
+      cursor: pointer;
       background-color: rgba(144, 134, 248, 0.1);
     }
 
@@ -69,10 +69,6 @@
     cursor: pointer;
     background-color: rgba(144, 134, 248, 0.1);
   }
-}
-
-.wrapper:hover {
-  cursor: none;
 }
 
 :global {
