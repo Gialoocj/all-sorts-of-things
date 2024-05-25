@@ -6,6 +6,7 @@ const routes = {
   chatbot: "/chat-bot",
   forbidden: "/forbidden",
   translate: "/translate",
+  search: "/search",
 };
 
 export default routes;

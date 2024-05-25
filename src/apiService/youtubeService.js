@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const key = "AIzaSyB1C2WWbj0odLlFZkYBORhtDwzwWVvfo7w";
+const key = "AIzaSyDxyw5CSlgtx3TfH0H6E0vfIGkILa8aHnA";
 const baseUrl = `https://www.googleapis.com/youtube/v3/`;
 
 export const searchVideos = createAsyncThunk(

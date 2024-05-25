@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Film.module.scss";
+import styles from "./Videos.module.scss";
 import classNames from "classnames/bind";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { getVideoById } from "../../apiService/youtubeService";
-// import Video from "../../components/Video/Video";
+import Video from "../../components/Video/Video";
 import { MenuIcon, SearchIcon } from "../../components/icons/icons";
 import {
   searchVideos,
   getPopularVideos,
 } from "../../apiService/youtubeService";
 import PopularVideo from "../../components/PopularVideo/PopularVideo";
-import { useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-const Film = () => {
+const Videos = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [searchKey, setSearchKey] = useState("");
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [popularVideos, setPopularVideos] = useState([]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const q = searchParams.get("q");
+  //   const {q}
 
   const handleInputChange = (e) => {
     setSearchKey(e.target.value);
@@ -36,18 +38,19 @@ const Film = () => {
       setLoading(false);
       setVideos(result.payload.items);
       toast.success("Get list video success");
-      navigate(`/search?q=${searchKey}`);
+      console.log(result);
     });
   };
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getPopularVideos()).then((result) => {
-      setPopularVideos(result.payload.items);
+    dispatch(searchVideos(q)).then((result) => {
+      setVideos(result.payload.items);
       // console.log(result.payload.items);
       setLoading(false);
+      console.log(result);
     });
-  }, [dispatch]);
+  }, []);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("search-wrapper")}>
@@ -57,11 +60,7 @@ const Film = () => {
             onChange={handleInputChange}
             className={cx("input-search")}
             placeholder="Search"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                searchVideo();
-              }
-            }}
+            value={q}
           />
           <button className={cx("btn-search")}>
             <SearchIcon className={cx("icon")} />
@@ -76,10 +75,10 @@ const Film = () => {
           </div>
         ) : (
           <>
-            {popularVideos.map((video) => {
+            {videos?.map((video) => {
               return (
                 <div className={cx("video-item")}>
-                  <PopularVideo video={video} />
+                  <Video video={video} />
                 </div>
               );
             })}
@@ -90,4 +89,12 @@ const Film = () => {
   );
 };
 
-export default Film;
+export default Videos;
+
+// import React from "react";
+
+// const Videos = () => {
+//   return <div>Videos</div>;
+// };
+
+// export default Videos;

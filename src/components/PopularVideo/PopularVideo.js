@@ -26,9 +26,6 @@ const PopularVideo = ({ video }) => {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(video);
-  }, [video]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("thumbnails-wrapper")}>

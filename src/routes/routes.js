@@ -9,6 +9,7 @@ import ChatBot from "../pages/ChatBot";
 import Page404 from "../pages/Page404";
 import Forbidden from "../pages/Forbidden/Forbidden";
 import Translate from "../pages/Translate/Translate";
+import Videos from "../pages/Videos/Videos";
 
 const publicRoutes = [
   {
@@ -47,6 +48,7 @@ const privateRoutes = [
     layout: MainLayout,
   },
   { path: config.routes.translate, component: Translate, layout: MainLayout },
+  { path: config.routes.search, component: Videos, layout: MainLayout },
 ];
 
 export { publicRoutes, privateRoutes };
