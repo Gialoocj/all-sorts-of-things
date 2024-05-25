@@ -52,8 +52,8 @@ export const getPopularVideos = createAsyncThunk(
           key: key,
           part: "snippet,statistics",
           chart: "mostPopular",
-          regionCode: "US",
-          maxResults: 12,
+          regionCode: "KR",
+          maxResults: 18,
         },
       });
 
