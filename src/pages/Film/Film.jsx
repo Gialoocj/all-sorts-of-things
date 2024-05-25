@@ -76,13 +76,14 @@ const Film = () => {
           </div>
         ) : (
           <>
-            {popularVideos?.map((video) => {
-              return (
-                <div className={cx("video-item")}>
-                  <PopularVideo video={video} />
-                </div>
-              );
-            })}
+            {popularVideos &&
+              popularVideos.map((video) => {
+                return (
+                  <div className={cx("video-item")}>
+                    <PopularVideo video={video} />
+                  </div>
+                );
+              })}
           </>
         )}
       </div>
