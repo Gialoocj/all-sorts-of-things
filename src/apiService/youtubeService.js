@@ -14,7 +14,7 @@ export const searchVideos = createAsyncThunk(
           type: "video",
           part: "snippet",
           q: query,
-          maxResults: 5,
+          maxResults: 12,
         },
       });
       return response.data;
