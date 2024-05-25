@@ -20,7 +20,7 @@
   }
 
   .btn-menu-wrapper {
-    height: 68px;
+    height: 72px;
     width: 100%;
     position: fixed;
     z-index: 998;
@@ -28,6 +28,7 @@
     padding: 0 12px;
     display: none;
     background-color: #fff;
+    // box-shadow: 0 1px 0px rgba(211, 130, 211, 0.7);
 
     @include media-breakpoint-down(lg) {
       display: flex;
