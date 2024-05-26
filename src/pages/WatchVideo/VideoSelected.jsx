@@ -143,7 +143,7 @@ const WatchVideo = () => {
               <div className={cx("channel-skeleton")}>
                 <div className={cx("title")}>{videoInfo?.localized.title}</div>
                 <div className={cx("channel-title")}>
-                  {videoInfo.channelTitle}
+                  {videoInfo?.channelTitle}
                 </div>
               </div>
             </div>
