@@ -10,6 +10,8 @@ import Page404 from "../pages/Page404";
 import Forbidden from "../pages/Forbidden/Forbidden";
 import Translate from "../pages/Translate/Translate";
 import Videos from "../pages/Videos/Videos";
+import VideoSelected from "../pages/WatchVideo/VideoSelected";
+import Watch from "../pages/Watch";
 
 const publicRoutes = [
   {
@@ -37,11 +39,11 @@ const publicRoutes = [
 ];
 
 const privateRoutes = [
-  {
-    path: config.routes.watch,
-    component: Film,
-    layout: MainLayout,
-  },
+  // {
+  //   path: config.routes.watch,
+  //   component: Film,
+  //   layout: MainLayout,
+  // },
   {
     path: config.routes.chatbot,
     component: ChatBot,
@@ -49,6 +51,11 @@ const privateRoutes = [
   },
   { path: config.routes.translate, component: Translate, layout: MainLayout },
   { path: config.routes.search, component: Videos, layout: MainLayout },
+  {
+    path: config.routes.watch,
+    component: Watch,
+    layout: MainLayout,
+  },
 ];
 
 export { publicRoutes, privateRoutes };

@@ -27,6 +27,10 @@ const Film = () => {
     setSearchKey(e.target.value);
   };
 
+  const selectedVideoToWatch = (videoId) => {
+    window.location.href = `/watch?v=${videoId}`;
+  };
+
   const searchVideo = () => {
     setLoading(true);
     dispatch(searchVideos(searchKey)).then((result) => {
@@ -79,7 +83,10 @@ const Film = () => {
             {popularVideos &&
               popularVideos.map((video) => {
                 return (
-                  <div className={cx("video-item")}>
+                  <div
+                    className={cx("video-item")}
+                    onClick={() => selectedVideoToWatch(video.id)}
+                  >
                     <PopularVideo video={video} />
                   </div>
                 );

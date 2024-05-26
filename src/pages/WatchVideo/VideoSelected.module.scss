@@ -1,0 +1,369 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Goudy+Bookletter+1911&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&display=swap");
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  padding-top: 0;
+
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+
+  .search-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    position: fixed;
+    top: 0;
+    z-index: 998;
+    background-color: #fff;
+    margin-left: -6%;
+    // margin-top: -6;
+
+    @include media-breakpoint-down(lg) {
+      margin-left: 20%;
+      justify-content: start;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-left: 70px;
+      justify-content: start;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-left: 70px;
+      justify-content: start;
+    }
+
+    .search {
+      width: 50%;
+      height: 48px;
+      border: 2px solid #e2e2e2;
+      border-radius: 100rem;
+      display: flex;
+      align-items: center;
+
+      @include media-breakpoint-down(lg) {
+        width: 60%;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 76%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 76%;
+      }
+
+      .input-search {
+        height: 100%;
+        border: 0;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 90%;
+        font-family: "Goudy Bookletter 1911", serif;
+        font-size: 16px;
+        padding: 0 16px;
+      }
+
+      .input-search:focus {
+        outline: none;
+      }
+
+      .btn-search {
+        height: 100%;
+        width: 10%;
+        border: 0;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-left: 1px solid #e2e2e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+
+        @include media-breakpoint-down(lg) {
+          width: 16%;
+        }
+
+        @include media-breakpoint-down(md) {
+          width: 16%;
+        }
+
+        @include media-breakpoint-down(sm) {
+          width: 16%;
+        }
+
+        .search-icon {
+          width: 26px;
+        }
+      }
+    }
+  }
+
+  .video-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    height: 90%;
+    margin-top: 90px;
+    gap: 16px;
+
+    .container {
+      grid-column: span 8;
+      width: 100%;
+      height: 100%;
+
+      @include media-breakpoint-down(lg) {
+        grid-column: span 12;
+      }
+
+      @include media-breakpoint-down(md) {
+        grid-column: span 12;
+        height: 80%;
+      }
+      @include media-breakpoint-down(sm) {
+        grid-column: span 12;
+        height: 80%;
+      }
+
+      .notice-wrapper-skeleton {
+        height: 100%;
+        width: 100%;
+
+        .notice {
+          width: 100%;
+          height: 72%;
+          border-radius: 12px;
+          background-color: black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-image: url("../../assets/images/emotion.jpg");
+          background-size: cover;
+          padding: 12px;
+
+          .icon {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(1%)
+              saturate(0%) hue-rotate(225deg) brightness(102%) contrast(103%);
+            width: 80px;
+            height: 80px;
+          }
+
+          h1 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 28px;
+            backdrop-filter: blur(10px);
+            padding: 12px;
+            border-radius: 8px;
+
+            @include media-breakpoint-down(md) {
+              font-size: 14px;
+            }
+
+            @include media-breakpoint-down(sm) {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .skeleton {
+          width: 100%;
+          height: 20%;
+          margin-top: 12px;
+          display: flex;
+
+          .channel-image-skeleton {
+            width: 80px;
+            height: 80px;
+            border-radius: 100rem;
+            background-color: gray;
+
+            @include media-breakpoint-down(md) {
+              width: 60px;
+              height: 60px;
+            }
+          }
+
+          .channel-skeleton {
+            width: 84%;
+            margin-left: 12px;
+
+            @include media-breakpoint-down(md) {
+              width: 78%;
+            }
+
+            @include media-breakpoint-down(sm) {
+              width: 72%;
+            }
+
+            .title-skeleton {
+              width: 100%;
+              height: 24px;
+              border-radius: 4px;
+            }
+
+            .channel-title-skeleton {
+              width: 40%;
+              height: 24px;
+              border-radius: 4px;
+              margin-top: 8px;
+            }
+          }
+
+          @keyframes skeleton-loading {
+            0% {
+              background-position: -200px 0;
+            }
+            100% {
+              background-position: calc(200px + 100%) 0;
+            }
+          }
+
+          /* Apply animation to skeleton elements */
+          .channel-image-skeleton,
+          .title-skeleton,
+          .channel-title-skeleton {
+            background: linear-gradient(90deg, #ddd 25%, #e1e1e1 50%, #ddd 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+          }
+        }
+      }
+
+      .notice-wrapper {
+        height: 100%;
+        width: 100%;
+
+        .notice {
+          width: 100%;
+          height: 78%;
+          border-radius: 12px;
+          background-color: black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          //   background-image: url("../../assets/images/emotion.jpg");
+          background-size: cover;
+          border-radius: 12px;
+
+          @include media-breakpoint-down(lg) {
+            height: 100%;
+          }
+
+          @include media-breakpoint-down(md) {
+            height: 100%;
+            border-radius: 0;
+          }
+
+          @include media-breakpoint-down(sm) {
+            height: 100%;
+            border-radius: 0;
+          }
+
+          .react-player {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 12px;
+            overflow: hidden;
+
+            @include media-breakpoint-down(md) {
+              border-radius: 0px;
+            }
+
+            @include media-breakpoint-down(sm) {
+              border-radius: 0px;
+            }
+          }
+
+          .icon {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(1%)
+              saturate(0%) hue-rotate(225deg) brightness(102%) contrast(103%);
+            width: 80px;
+            height: 80px;
+          }
+        }
+
+        .skeleton {
+          width: 100%;
+          height: 20%;
+          margin-top: 12px;
+          display: flex;
+          padding: 12px;
+
+          .channel-image-skeleton {
+            width: 80px;
+            height: 80px;
+            border-radius: 100rem;
+            background-color: gray;
+
+            @include media-breakpoint-down(md) {
+              width: 60px;
+              height: 60px;
+            }
+          }
+
+          .channel-skeleton {
+            width: 84%;
+            margin-left: 12px;
+
+            @include media-breakpoint-down(md) {
+              width: 78%;
+            }
+
+            @include media-breakpoint-down(md) {
+              width: 72%;
+            }
+
+            .title {
+              width: 100%;
+              height: 24px;
+              border-radius: 4px;
+              font-weight: 600;
+              font-size: 18px;
+
+              @include media-breakpoint-down(md) {
+                font-size: 16px;
+              }
+            }
+
+            .channel-title {
+              width: 40%;
+              height: 24px;
+              border-radius: 4px;
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    .list-videos {
+      grid-column: span 4;
+      width: 100%;
+      height: 100%;
+      background: gray;
+
+      @include media-breakpoint-down(lg) {
+        grid-column: span 12;
+        margin-top: 120px;
+      }
+
+      @include media-breakpoint-down(md) {
+        grid-column: span 12;
+        //   margin-top: 60px;
+      }
+      @include media-breakpoint-down(sm) {
+        grid-column: span 12;
+        //   margin-top: 60px;
+      }
+    }
+  }
+}

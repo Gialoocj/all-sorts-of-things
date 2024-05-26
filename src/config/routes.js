@@ -7,6 +7,7 @@ const routes = {
   forbidden: "/forbidden",
   translate: "/translate",
   search: "/search",
+  // video:'/'
 };
 
 export default routes;

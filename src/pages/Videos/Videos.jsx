@@ -23,7 +23,10 @@ const Videos = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const q = searchParams.get("q");
-  //   const {q}
+
+  useEffect(() => {
+    setSearchKey(q);
+  }, [q]);
 
   const handleInputChange = (e) => {
     setSearchKey(e.target.value);
@@ -40,6 +43,10 @@ const Videos = () => {
       toast.success("Get list video success");
       console.log(result);
     });
+  };
+
+  const selectedVideoToWatch = (videoId) => {
+    window.location.href = `/watch?v=${videoId}`;
   };
 
   useEffect(() => {
@@ -60,7 +67,12 @@ const Videos = () => {
             onChange={handleInputChange}
             className={cx("input-search")}
             placeholder="Search"
-            value={q}
+            value={searchKey}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                window.location.href = `/search?q=${searchKey}`;
+              }
+            }}
           />
           <button className={cx("btn-search")} onClick={searchVideo}>
             <SearchIcon className={cx("icon")} />
@@ -77,7 +89,10 @@ const Videos = () => {
           <>
             {videos?.map((video) => {
               return (
-                <div className={cx("video-item")}>
+                <div
+                  className={cx("video-item")}
+                  onClick={() => selectedVideoToWatch(video.id.videoId)}
+                >
                   <Video video={video} />
                 </div>
               );
