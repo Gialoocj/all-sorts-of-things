@@ -31,6 +31,24 @@ const WatchVideo = () => {
     setSearchKey(e.target.value);
   };
 
+  const convertView = (viewCount) => {
+    if (viewCount)
+      return viewCount
+        .toString()
+        .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  const convertDate = (dateString) => {
+    // Tạo đối tượng Date từ chuỗi ngày
+    const date = new Date(dateString);
+    // Lấy ngày, tháng và năm từ đối tượng Date
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng trong JavaScript bắt đầu từ 0
+    const year = date.getFullYear();
+    // Trả về chuỗi theo định dạng ngày/tháng/năm
+    return `${day} thg ${month}, ${year}`;
+  };
+
   useEffect(() => {
     if (!v) {
       return navigate("/error");
@@ -54,7 +72,7 @@ const WatchVideo = () => {
   useEffect(() => {
     if (videoInfo) {
       dispatch(getChannelById(videoInfo.channelId)).then((result) => {
-        setChannelInfo(result.payload.items[0].snippet);
+        setChannelInfo(result.payload.items[0]);
         console.log(result);
       });
     }
@@ -132,19 +150,37 @@ const WatchVideo = () => {
               />
             </div>
             <div className={cx("skeleton")}>
-              <div className={cx("channel-image-skeleton")}>
-                <img
-                  className={cx("image")}
-                  src={channelInfo?.thumbnails?.default.url}
-                  alt="channel-avatar"
-                  style={{ borderRadius: "50%" }}
-                />
-              </div>
-              <div className={cx("channel-skeleton")}>
-                <div className={cx("title")}>{videoInfo?.localized.title}</div>
-                <div className={cx("channel-title")}>
-                  {videoInfo?.channelTitle}
+              <div className={cx("title")}>
+                <span>{videoInfo?.localized.title}</span>
+                <div className={cx("view-count")}>
+                  <span>
+                    {convertView(channelInfo?.statistics?.viewCount)} views
+                  </span>
+                  <span style={{ marginLeft: "12px" }}>
+                    {convertDate(videoInfo?.publishedAt)}
+                  </span>
                 </div>
+              </div>
+
+              <div className={cx("channel")}>
+                <div className={cx("channel-image")}>
+                  <img
+                    className={cx("image")}
+                    src={channelInfo?.snippet?.thumbnails?.default.url}
+                    alt="channel-avatar"
+                    style={{ borderRadius: "50%" }}
+                  />
+                </div>
+                <div className={cx("channel-title")}>
+                  <span className={cx("channel-name")}>
+                    {videoInfo?.channelTitle}
+                  </span>
+                  <span className={cx("subcribers")}>
+                    {channelInfo?.statistics?.subscriberCount} Subcribers
+                  </span>
+                </div>
+
+                <button className={cx("btn_register")}>Register</button>
               </div>
             </div>
           </div>
