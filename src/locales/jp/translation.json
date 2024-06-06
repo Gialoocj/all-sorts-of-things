@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "title01": "映画",
+    "title02": "翻訳",
+    "title03": "チャットボット",
+    "title04": "設定",
+    "title05": "言語"
+  },
+  "button": {
+    "logout": "ログアウト"
+  },
+  "translation": {
+    "title01": "ソース",
+    "title02": "ターゲット",
+    "title03": "ソース",
+    "title04": "翻訳",
+    "desc01": "言語の検出",
+    "desc02": "ここにテキストを入力してください",
+    "button": "翻訳"
+  }
+}

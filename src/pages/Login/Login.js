@@ -17,6 +17,7 @@ const Login = () => {
     password: "",
   });
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setLoginForm({
@@ -31,15 +32,16 @@ const Login = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    localStorage.setItem("lang", "en");
+    setLoading(true);
     dispatch(login(loginForm)).then((result) => {
       if (result.payload.code !== 200) {
         return toast.error(result.payload.message);
       }
       toast.success(result.payload.message);
-      console.log(result);
       Cookies.set("accessToken", result.payload.accessToken);
       Cookies.set("refreshToken", result.payload.refreshToken);
-
+      setLoading(false);
       setTimeout(() => {
         window.location.href = "/watch";
       }, 1500);
@@ -106,12 +108,13 @@ const Login = () => {
           </div>
 
           <button
-            className={cx("btn-register")}
+            className={cx("btn-register", { "btn-register-loading": loading })}
             onClick={(e) => {
               handleRegister(e);
             }}
+            disabled={loading}
           >
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
           <p>
             Don't have an account? <Link to="/register">Register</Link> here

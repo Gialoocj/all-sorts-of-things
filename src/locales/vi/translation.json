@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "title01": "Phim",
+    "title02": "Dịch",
+    "title03": "Chat bot",
+    "title04": "Cài đặt",
+    "title05": "Ngôn ngữ"
+  },
+  "button": {
+    "logout": "Đăng xuất"
+  },
+  "translation": {
+    "title01": "Nguồn",
+    "title02": "Đích",
+    "title03": "Nguồn",
+    "title04": "Bản dịch",
+    "desc01": "Phát hiện ngôn ngữ",
+    "desc02": "Nhập văn bản của bạn ở đây",
+    "button": "Dịch"
+  }
+}

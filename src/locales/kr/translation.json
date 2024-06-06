@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "title01": "영화",
+    "title02": "번역",
+    "title03": "챗봇",
+    "title04": "설정",
+    "title05": "언어"
+  },
+  "button": {
+    "logout": "로그 아웃"
+  },
+  "translation": {
+    "title01": "소스",
+    "title02": "대상",
+    "title03": "소스",
+    "title04": "번역",
+    "desc01": "언어 감지",
+    "desc02": "여기에 텍스트를 입력하세요",
+    "button": "번역"
+  }
+}

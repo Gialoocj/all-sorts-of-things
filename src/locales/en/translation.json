@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "title01": "Movies",
+    "title02": "Translate",
+    "title03": "Chat bot",
+    "title04": "Settings",
+    "title05": "Language"
+  },
+  "button": {
+    "logout": "Log out"
+  },
+  "translation": {
+    "title01": "Source",
+    "title02": "Target",
+    "title03": "Source",
+    "title04": "Translation",
+    "desc01": "Language detection",
+    "desc02": "Enter your text here",
+    "button": "Translate"
+  }
+}

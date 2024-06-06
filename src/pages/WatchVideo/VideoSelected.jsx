@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./VideoSelected.module.scss";
 import classNames from "classnames/bind";
 import { useLocation } from "react-router-dom";
-import { getVideoById } from "../../apiService/youtubeService";
+import {
+  getVideoById,
+  getPopularVideos,
+} from "../../apiService/youtubeService";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -10,6 +13,7 @@ import { toast } from "react-toastify";
 
 import { WarningIcon, SearchIcon } from "../../components/icons/icons";
 import { searchVideos, getChannelById } from "../../apiService/youtubeService";
+import PopularVideo from "../../components/PopularVideo/PopularVideo";
 
 const cx = classNames.bind(styles);
 
@@ -93,6 +97,13 @@ const WatchVideo = () => {
       navigate(`/search?q=${searchKey}`);
     });
   };
+
+  useEffect(() => {
+    dispatch(getPopularVideos()).then((result) => {
+      setPopularVideos(result.payload.items);
+      console.log(result);
+    });
+  }, []);
 
   const url = `https://www.youtube.com/watch?v=${v}`;
 
@@ -185,7 +196,15 @@ const WatchVideo = () => {
             </div>
           </div>
         </div>
-        <div className={cx("list-videos")}>List</div>
+        <div className={cx("list-videos")}>
+          {popularVideos.map((video) => {
+            return (
+              <div className={cx("item-video")}>
+                <PopularVideo key={video.id} video={video} />;
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

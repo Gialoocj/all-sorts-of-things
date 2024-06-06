@@ -40,8 +40,7 @@ const Videos = () => {
       }
       setLoading(false);
       setVideos(result.payload.items);
-      toast.success("Get list video success");
-      console.log(result);
+      // toast.success("Get list video success");
     });
   };
 
@@ -53,9 +52,7 @@ const Videos = () => {
     setLoading(true);
     dispatch(searchVideos(q)).then((result) => {
       setVideos(result.payload.items);
-      // console.log(result.payload.items);
       setLoading(false);
-      console.log(result);
     });
   }, []);
   return (

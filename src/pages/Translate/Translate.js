@@ -7,6 +7,8 @@ import { ArrowdownIcon, CoppyIcon } from "../../components/icons/icons";
 
 import { translate } from "../../apiService/translateService";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n/i18n";
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +36,7 @@ const Translate = () => {
   const outputRef = useRef();
   const dispatch = useDispatch();
   const navigator = window.navigator;
+  const { t } = useTranslation();
 
   const [targetLang, setTargetLang] = useState(langData[0]);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -82,16 +85,21 @@ const Translate = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const currentLanguage = localStorage.getItem("lang");
+    i18n.changeLanguage(currentLanguage);
+  });
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("translate-container")}>
         <div className={cx("translate-header")}>
           <div className={cx("button-group")}>
-            <label>Source</label>
-            <div className={cx("source-lang")}>Detected language</div>
+            <label>{t("translation.title01")}</label>
+            <div className={cx("source-lang")}>{t("translation.desc01")}</div>
           </div>
           <div className={cx("button-group")} ref={langRef}>
-            <label>Target</label>
+            <label>{t("translation.title02")}</label>
             <div
               className={cx("target-lang")}
               onClick={() => {
@@ -122,12 +130,12 @@ const Translate = () => {
           </div>
         </div>
         <div className={cx("input-lang")}>
-          <label>Source text</label>
+          <label>{t("translation.title03")}</label>
           <textarea
             className={cx("input-text")}
             onChange={handleInputChange}
             value={inputText}
-            placeholder="Enter your text here"
+            placeholder={t("translation.desc02")}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 setOutputText("");
@@ -137,7 +145,7 @@ const Translate = () => {
           ></textarea>
         </div>
         <div className={cx("output-lang")}>
-          <label>Target text</label>
+          <label>{t("translation.title04")}</label>
           <textarea
             className={cx("output-text")}
             onChange={handleInputChange}
@@ -174,7 +182,7 @@ const Translate = () => {
               handleTranslate();
             }}
           >
-            Translate
+            {t("translation.button")}
           </button>
         </div>
       </div>
